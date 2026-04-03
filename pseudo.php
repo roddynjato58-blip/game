@@ -7,44 +7,31 @@
             $pseudo=$_POST["pseudo"];
             $password=$_POST["mdp"];
 
-            function verifierMotDePasse($pseudo,$password,$choix,$mdp)
+               function verifierMotDePasse($pseudo,$password,$choix,$mdp)
             { 
-                echo $pseudo;
-                echo $password;
-                echo "<br>";
                 for($i=0;$i<count($choix);$i++)
                 
                 {
-                    var_dump($choix);
-                    echo "<br>";
-                    var_dump($choix[$i]);
-                    if ($pseudo==$choix[$i]){
-                        if ($password==$mdp[$i])
-                        { 
-                            var_dump("okeeeeeee ", $choix[$i] , $mdp[$i]);
-                            header ("Location:jeux.php");
-                            return true ;
-
+                    if ($choix[$i]==$pseudo){
+                        if($mdp[$i] == $password) {
+                            echo "ok mdp";
+                            echo "<br>";
+                            header ("Location:../jeux.php");
+                            
                         }
-                        else
-                        { 
-                            var_dump("diso mdp ", $choix[$i] , $mdp[$i]);
-                            echo "NON";
-                            return false;
-                        }
-                        
+                        break;
                     }
                     else {
-                             var_dump("diso pseudo ", $choix[$i] , $mdp[$i]);
-                            echo "NON";
-                            return false;
-                        }
-                    break;
+                        echo "NON";
+                    }
+                
                 }
             }
             
-            echo verifierMotDePasse($pseudo,$password,$choix,$mdp);
+            verifierMotDePasse($pseudo,$password,$choix,$mdp);
 }
+   
+
    
 ?>
 <!DOCTYPE html>
